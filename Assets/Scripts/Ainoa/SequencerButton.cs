@@ -4,19 +4,27 @@ namespace Ainoa.Scene1
 {
     public class SequencerButton : MonoBehaviour
     {
+        public SequencerManager.Sequences Type => _typeSequence;
         [SerializeField] private SequencerManager.Sequences _typeSequence;
-         
+
+        private Animator _anim;
+
         public delegate void DelegateSequence(SequencerManager.Sequences seq);
         public static DelegateSequence OnSequence;
 
-        public void Interact() 
+        private void Awake()
         {
-            Animations();
+            _anim = GetComponentInChildren<Animator>();
+        }
+        public void Interact()
+        {
+            Show();
             OnSequence?.Invoke(_typeSequence);
         }
 
-        private void Animations() 
+        public void Show()
         {
+            _anim.Play("button_press");
         }
     }
 }

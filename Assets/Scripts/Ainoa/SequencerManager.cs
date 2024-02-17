@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Ainoa.Scene1
@@ -12,8 +13,8 @@ namespace Ainoa.Scene1
         [SerializeField] private Sequences[] _sequences;
         [SerializeField] private int _maxRounds = 3;
 
-        [Header("References")]
-        [SerializeField] private GameObject[] _sequencerButtons;
+        [Header("References")] 
+        [SerializeField] private SequencerButton[] _buttons;
 
         private List<Sequences> _currentPlayerSeq;
         private float _maxSequencesLength = 4;
@@ -21,6 +22,13 @@ namespace Ainoa.Scene1
         private bool _blockInteraction;
         private bool _completedSequence;
         private bool _endMinigame = false;
+
+        public delegate void DelegateCounter();
+        public static DelegateCounter OnCounterAdd;
+
+        public delegate void DelegateCounterSet(int val);
+        public static DelegateCounterSet OnCounterSetUp;
+
         private void OnEnable()
         {
             SequencerButton.OnSequence += AddPressSequence;
@@ -29,6 +37,15 @@ namespace Ainoa.Scene1
         private void OnDisable()
         {
             SequencerButton.OnSequence -= AddPressSequence;
+        }
+
+        private void Awake()
+        {
+            StartGame();
+        }
+        private void Start()
+        {
+            OnCounterSetUp?.Invoke(_maxRounds);
         }
 
         private void AddPressSequence(Sequences s)
@@ -58,6 +75,7 @@ namespace Ainoa.Scene1
         {
             _completedSequence = false;
             _currentRound++;
+            OnCounterAdd?.Invoke();
 
             if (_currentRound < _maxRounds)
             {
@@ -71,10 +89,6 @@ namespace Ainoa.Scene1
             }
         }
 
-        private void Awake()
-        {
-            StartGame();
-        }
 
         public void StartGame()
         {
@@ -102,14 +116,20 @@ namespace Ainoa.Scene1
 
         private IEnumerator ShowSequenceRoutine()
         {
+            WaitForSeconds waitFive = new(5);
+            for (int i = 0; i < _sequences.Length; i++)
+            {
+                var b = _buttons.ToList().Single(n => n.Type == _sequences[i]);
+                b.Show();
+                yield return waitFive;
+            }
 
-            yield return null;
             _blockInteraction = false;
         }
 
-        private void EndMinigame() 
+        private void EndMinigame()
         {
-        //do something
+            //do something
         }
     }
 }
