@@ -16,7 +16,7 @@ namespace Ainoa.Scene1
         [Header("References")]
         [SerializeField] private SequencerButton[] _buttons;
 
-    [SerializeField]    private List<Sequences> _currentPlayerSeq;
+        private List<Sequences> _currentPlayerSeq;
         private float _maxSequencesLength = 4;
         private int _currentRound;
         private bool _blockInteraction;
@@ -39,10 +39,6 @@ namespace Ainoa.Scene1
             SequencerButton.OnSequence -= AddPressSequence;
         }
 
-        private void Awake()
-        {
-
-        }
         private void Start()
         {
             StartGame();
@@ -53,7 +49,6 @@ namespace Ainoa.Scene1
         {
             if (_blockInteraction || _endMinigame) return;
 
-            Debug.Log("sequence added");
             _currentPlayerSeq.Add(s);
 
             _completedSequence = _currentPlayerSeq.Count == _sequences.Length;
@@ -77,10 +72,10 @@ namespace Ainoa.Scene1
         {
             _completedSequence = false;
             _currentRound++;
-            OnCounterAdd?.Invoke();
 
             if (_currentRound < _maxRounds)
             {
+                OnCounterAdd?.Invoke();
                 _sequences = GetNewSequence();
                 ShowSequence();
             }
@@ -90,7 +85,6 @@ namespace Ainoa.Scene1
                 EndMinigame();
             }
         }
-
 
         public void StartGame()
         {
@@ -128,7 +122,7 @@ namespace Ainoa.Scene1
             }
 
             _blockInteraction = false;
-            Debug.Log("blockeD: "+_blockInteraction);
+            Debug.Log("blockeD: " + _blockInteraction);
         }
 
         private void EndMinigame()

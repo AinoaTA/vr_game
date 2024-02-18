@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 /// <summary>
@@ -6,9 +7,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 namespace Ainoa.Scene1
 {
     public class SequencerButton : MonoBehaviour
-    { 
+    {
         public SequencerManager.Sequences Type => _typeSequence;
         [SerializeField] private SequencerManager.Sequences _typeSequence;
+        [SerializeField] private Material _default;
+        [SerializeField] private Material _pista;
+
         [SerializeField] private Transform _visual;
 
         private Vector3 _initLocalPos;
@@ -21,64 +25,55 @@ namespace Ainoa.Scene1
         private bool _freeze;
         private Vector3 _offset;
 
-       [SerializeField] private XRBaseInteractable _interact;
+        [SerializeField] private XRBaseInteractable _interact;
         private bool _isFollowing;
 
         public delegate void DelegateSequence(SequencerManager.Sequences seq);
         public static DelegateSequence OnSequence;
 
         private bool _pressedCompleted;
+
         private void Awake()
         {
             _anim = GetComponentInChildren<Animator>();
             TryGetComponent(out _interact);
             _interact.hoverEntered.AddListener(Interact);
             _interact.hoverExited.AddListener(ResetAction);
-            _interact.selectEntered.AddListener(Freeze);
-
+            _interact.selectEntered.AddListener(Freeze); 
         }
+
         private void Start()
         {
             _initLocalPos = _visual.localPosition;
         }
         public void Interact(BaseInteractionEventArgs hover)
         {
-            Debug.Log(hover.interactorObject);
-            bool b = hover.interactorObject is XRPokeInteractor;
-            Debug.Log(hover.interactorObject.GetType());
-            Debug.Log(b);
-            if (b)
+            if (hover.interactorObject is XRPokeInteractor poke)
             {
-                var poke = hover.interactorObject as XRPokeInteractor;
-
                 _isFollowing = true;
                 _freeze = false;
 
                 _pokeAttachTransform = poke.attachTransform;
                 _offset = _visual.position - _pokeAttachTransform.position;
-
-                Debug.Log("interaction");
             }
-
-            //OnSequence?.Invoke(_typeSequence);
         }
 
         public void Freeze(BaseInteractionEventArgs hover)
-        { 
+        {
             if (hover.interactorObject is XRPokeInteractor)
             {
                 _freeze = true;
             }
 
-             
+
         }
         public void ResetAction(BaseInteractionEventArgs hover)
-        { 
+        {
             if (hover.interactorObject is XRPokeInteractor)
             {
                 _isFollowing = false;
                 _pressedCompleted = false;
-            } 
+            }
         }
 
         private void Update()
@@ -99,20 +94,31 @@ namespace Ainoa.Scene1
             }
             else
             {
-                _visual.localPosition = Vector3.Lerp(_visual.localPosition,  _initLocalPos, Time.deltaTime*_resetSpeed);
+                _visual.localPosition = Vector3.Lerp(_visual.localPosition, _initLocalPos, Time.deltaTime * _resetSpeed);
             }
 
-            if (_visual.localPosition.y <= -0.02f && !_pressedCompleted) 
+            if (_visual.localPosition.y <= -0.02f && !_pressedCompleted)
             {
                 _pressedCompleted = true;
                 OnSequence?.Invoke(_typeSequence);
-                Debug.Log("seeuqnce");
+                StartCoroutine(Showroutine());
             }
         }
 
         public void Show()
         {
             //_anim.Play("button_press");
+            StartCoroutine(Showroutine());
+        }
+
+        private IEnumerator Showroutine()
+        {
+            _visual.TryGetComponent(out MeshRenderer r);
+
+            r.material = _pista;
+            yield return new WaitForSeconds(0.5f);
+
+            r.material = _default;
         }
 
         //private void OnTriggerEnter(Collider other)
