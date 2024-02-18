@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+
 /// <summary>
 /// Script copied and modified from Valem Tutorials (https://www.youtube.com/watch?v=bts8VkDP_vU&t=850s)
+/// It was a start point to know how create these scripts for VR unity events.
 /// </summary>
 namespace Ainoa.Scene1
 {
@@ -63,9 +65,7 @@ namespace Ainoa.Scene1
             if (hover.interactorObject is XRPokeInteractor)
             {
                 _freeze = true;
-            }
-
-
+            } 
         }
         public void ResetAction(BaseInteractionEventArgs hover)
         {
@@ -97,6 +97,7 @@ namespace Ainoa.Scene1
                 _visual.localPosition = Vector3.Lerp(_visual.localPosition, _initLocalPos, Time.deltaTime * _resetSpeed);
             }
 
+            //clamp Y pos
             if (_visual.localPosition.y <= -0.02f && !_pressedCompleted)
             {
                 _pressedCompleted = true;
@@ -105,12 +106,18 @@ namespace Ainoa.Scene1
             }
         }
 
+        /// <summary>
+        /// Take a hint for player.
+        /// </summary>
         public void Show()
-        {
-            //_anim.Play("button_press");
+        { 
             StartCoroutine(Showroutine());
         }
 
+        /// <summary>
+        /// Just change between material for hint.
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator Showroutine()
         {
             _visual.TryGetComponent(out MeshRenderer r);
@@ -119,11 +126,6 @@ namespace Ainoa.Scene1
             yield return new WaitForSeconds(0.5f);
 
             r.material = _default;
-        }
-
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    Debug.Log(other.name);
-        //}
+        } 
     }
 }
