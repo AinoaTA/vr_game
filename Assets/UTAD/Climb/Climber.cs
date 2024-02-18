@@ -61,8 +61,6 @@ namespace Utad.Interaction
 			{
 				_trackingMovement = false;
 			}
-		}
-	
-		
+		} 
 	}
 }

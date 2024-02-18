@@ -13,10 +13,10 @@ namespace Ainoa.Scene1
         [SerializeField] private Sequences[] _sequences;
         [SerializeField] private int _maxRounds = 3;
 
-        [Header("References")] 
+        [Header("References")]
         [SerializeField] private SequencerButton[] _buttons;
 
-        private List<Sequences> _currentPlayerSeq;
+    [SerializeField]    private List<Sequences> _currentPlayerSeq;
         private float _maxSequencesLength = 4;
         private int _currentRound;
         private bool _blockInteraction;
@@ -41,10 +41,11 @@ namespace Ainoa.Scene1
 
         private void Awake()
         {
-            StartGame();
+
         }
         private void Start()
         {
+            StartGame();
             OnCounterSetUp?.Invoke(_maxRounds);
         }
 
@@ -52,6 +53,7 @@ namespace Ainoa.Scene1
         {
             if (_blockInteraction || _endMinigame) return;
 
+            Debug.Log("sequence added");
             _currentPlayerSeq.Add(s);
 
             _completedSequence = _currentPlayerSeq.Count == _sequences.Length;
@@ -93,6 +95,7 @@ namespace Ainoa.Scene1
         public void StartGame()
         {
             _sequences = GetNewSequence();
+            ShowSequence();
         }
 
         private Sequences[] GetNewSequence()
@@ -116,7 +119,7 @@ namespace Ainoa.Scene1
 
         private IEnumerator ShowSequenceRoutine()
         {
-            WaitForSeconds waitFive = new(5);
+            WaitForSeconds waitFive = new(1);
             for (int i = 0; i < _sequences.Length; i++)
             {
                 var b = _buttons.ToList().Single(n => n.Type == _sequences[i]);
@@ -125,6 +128,7 @@ namespace Ainoa.Scene1
             }
 
             _blockInteraction = false;
+            Debug.Log("blockeD: "+_blockInteraction);
         }
 
         private void EndMinigame()

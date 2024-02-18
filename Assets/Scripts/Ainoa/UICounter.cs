@@ -13,7 +13,7 @@ namespace Ainoa.UI
 
         private const string _format = "{0:0}:{1:00}"; //avoid string "lag"
 
-        public UnityEvent onQuit;
+        private UnityEvent _onQuit = new();
         private void Awake()
         {
             if (_instance != null && _instance != this)
@@ -25,7 +25,7 @@ namespace Ainoa.UI
             {
                 _instance = this;
                 _text = GetComponentInChildren<TMP_Text>();
-                onQuit.AddListener(delegate { Data.ManagerData.SaveData((int)_timer); });
+                _onQuit.AddListener(delegate { Data.ManagerData.SaveData((int)_timer); });
             }
         }
 
@@ -40,7 +40,7 @@ namespace Ainoa.UI
 
         private void OnApplicationQuit()
         {
-            onQuit?.Invoke();
+            _onQuit?.Invoke();
         }
     }
 }
