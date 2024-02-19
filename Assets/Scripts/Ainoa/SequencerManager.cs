@@ -16,7 +16,7 @@ namespace Ainoa.Scene1
         [Header("References")]
         [SerializeField] private SequencerButton[] _buttons;
 
-        private List<Sequences> _currentPlayerSeq;
+        private List<Sequences> _currentPlayerSeq=new();
         private float _maxSequencesLength = 4;
         private int _currentRound;
         private bool _blockInteraction;
