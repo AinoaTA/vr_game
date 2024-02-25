@@ -221,10 +221,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _typeSequence: 2
+  _default: {fileID: 0}
+  _hint: {fileID: 2100000, guid: 8ee6020e615dfdb458c312b15b58e1e0, type: 2}
   _visual: {fileID: 1360886431837458538}
   _localAxis: {x: 0, y: 1, z: 0}
   _resetSpeed: 5
-  _interact: {fileID: 0}
 --- !u!114 &7282308416035084220
 MonoBehaviour:
   m_ObjectHideFlags: 0

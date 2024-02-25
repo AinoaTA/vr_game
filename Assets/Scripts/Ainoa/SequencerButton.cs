@@ -13,35 +13,28 @@ namespace Ainoa.Scene1
         public SequencerManager.Sequences Type => _typeSequence;
         [SerializeField] private SequencerManager.Sequences _typeSequence;
         [SerializeField] private Material _default;
-        [SerializeField] private Material _pista;
-
-        [SerializeField] private Transform _visual;
-
-        private Vector3 _initLocalPos;
-
-        private Animator _anim;
-        private Transform _pokeAttachTransform;
+        [SerializeField] private Material _hint;
+        [SerializeField] private Transform _visual; 
         [SerializeField] private Vector3 _localAxis;
+
         [SerializeField] private float _resetSpeed = 5f;
-
+        private Transform _pokeAttachTransform;
+        private XRBaseInteractable _interact;
+        private Vector3 _initLocalPos;
         private bool _freeze;
-        private Vector3 _offset;
-
-        [SerializeField] private XRBaseInteractable _interact;
-        private bool _isFollowing;
+        private Vector3 _offset; 
+        private bool _isFollowing; 
+        private bool _pressedCompleted;
 
         public delegate void DelegateSequence(SequencerManager.Sequences seq);
         public static DelegateSequence OnSequence;
-
-        private bool _pressedCompleted;
-
+         
         private void Awake()
         {
-            _anim = GetComponentInChildren<Animator>();
             TryGetComponent(out _interact);
             _interact.hoverEntered.AddListener(Interact);
             _interact.hoverExited.AddListener(ResetAction);
-            _interact.selectEntered.AddListener(Freeze); 
+            _interact.selectEntered.AddListener(Freeze);
         }
 
         private void Start()
@@ -65,7 +58,7 @@ namespace Ainoa.Scene1
             if (hover.interactorObject is XRPokeInteractor)
             {
                 _freeze = true;
-            } 
+            }
         }
         public void ResetAction(BaseInteractionEventArgs hover)
         {
@@ -110,7 +103,7 @@ namespace Ainoa.Scene1
         /// Take a hint for player.
         /// </summary>
         public void Show()
-        { 
+        {
             StartCoroutine(Showroutine());
         }
 
@@ -122,10 +115,10 @@ namespace Ainoa.Scene1
         {
             _visual.TryGetComponent(out MeshRenderer r);
 
-            r.material = _pista;
+            r.material = _hint;
             yield return new WaitForSeconds(0.5f);
 
             r.material = _default;
-        } 
+        }
     }
 }

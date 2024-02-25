@@ -15,6 +15,7 @@ namespace Ainoa.Scene1
 
         [Header("References")]
         [SerializeField] private SequencerButton[] _buttons;
+        [SerializeField] private MinigameFeedback _feedback;
 
         private List<Sequences> _currentPlayerSeq=new();
         private float _maxSequencesLength = 4;
@@ -39,10 +40,12 @@ namespace Ainoa.Scene1
             SequencerButton.OnSequence -= AddPressSequence;
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
-            StartGame();
             OnCounterSetUp?.Invoke(_maxRounds);
+
+            yield return new WaitForSeconds(1.5f);
+            StartGame();
         }
 
         private void AddPressSequence(Sequences s)
@@ -57,12 +60,15 @@ namespace Ainoa.Scene1
             {
                 if (_currentPlayerSeq[i] != _sequences[i])
                 {
+                    _feedback.Wrong();
                     _currentPlayerSeq.Clear();
                     ShowSequence();
                     _completedSequence = false;
                     break;
                 }
             }
+
+            _feedback.Correct();
 
             if (_completedSequence)
                 Completed();
