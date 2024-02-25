@@ -1,3 +1,4 @@
+using Ainoa.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Ainoa.Scene1
         [Header("References")]
         [SerializeField] private SequencerButton[] _buttons;
         [SerializeField] private MinigameFeedback _feedback;
+        [SerializeField] private Item _itemReward;
 
         private List<Sequences> _currentPlayerSeq=new();
         private float _maxSequencesLength = 4;
@@ -23,6 +25,7 @@ namespace Ainoa.Scene1
         private bool _blockInteraction;
         private bool _completedSequence;
         private bool _endMinigame = false;
+
 
         public delegate void DelegateCounter();
         public static DelegateCounter OnCounterAdd;
