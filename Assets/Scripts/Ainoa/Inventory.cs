@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ainoa.Inventory
+namespace Ainoa.Items
 {
     [System.Serializable]
     public class Inventory

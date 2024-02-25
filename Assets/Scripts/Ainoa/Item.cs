@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ainoa.Inventory
+namespace Ainoa.Items
 {
     [CreateAssetMenu(fileName = "Item", menuName = "Ainoa/Item")]
     public class Item : ScriptableObject

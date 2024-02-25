@@ -1,4 +1,4 @@
-using Ainoa.Inventory;
+using Ainoa.Items;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Ainoa.Scene1
 {
-    public class SequencerManager : MonoBehaviour
+    public class SequencerManager : Minigame
     {
         public enum Sequences { RED, BLUE, YELLOW, GREEN, END }
 
@@ -17,21 +17,20 @@ namespace Ainoa.Scene1
         [Header("References")]
         [SerializeField] private SequencerButton[] _buttons;
         [SerializeField] private MinigameFeedback _feedback;
-        [SerializeField] private Item _itemReward;
 
-        private List<Sequences> _currentPlayerSeq=new();
+        private List<Sequences> _currentPlayerSeq = new();
         private float _maxSequencesLength = 4;
         private int _currentRound;
         private bool _blockInteraction;
         private bool _completedSequence;
-        private bool _endMinigame = false;
-
+        private bool _endMinigame = false; 
 
         public delegate void DelegateCounter();
         public static DelegateCounter OnCounterAdd;
 
         public delegate void DelegateCounterSet(int val);
         public static DelegateCounterSet OnCounterSetUp;
+
 
         private void OnEnable()
         {
@@ -134,8 +133,9 @@ namespace Ainoa.Scene1
             Debug.Log("blockeD: " + _blockInteraction);
         }
 
-        private void EndMinigame()
+        protected override void EndMinigame()
         {
+            base.EndMinigame();
             //do something
         }
     }

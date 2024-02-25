@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ainoa.Inventory
+namespace Ainoa.Items
 {
     public class ItemInteract : MonoBehaviour
     {
