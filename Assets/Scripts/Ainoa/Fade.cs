@@ -8,7 +8,7 @@ namespace Ainoa.UI
     {
         [SerializeField] private Image _fadeImage;
 
-        public Fade instance;
+        public static Fade instance;
         private void Awake()
         {
             if (instance == null)

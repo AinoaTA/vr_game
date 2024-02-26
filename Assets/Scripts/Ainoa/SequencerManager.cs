@@ -66,7 +66,7 @@ namespace Ainoa.Scene1
                     _currentPlayerSeq.Clear();
                     ShowSequence();
                     _completedSequence = false;
-                    break;
+                    return;
                 }
             }
 
