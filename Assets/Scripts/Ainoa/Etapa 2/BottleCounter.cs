@@ -1,0 +1,39 @@
+using TMPro;
+using UnityEngine;
+
+namespace Ainoa.Bottle
+{
+    public class BottleCounter : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text _counterBottle;
+
+        private int _max;
+        private int _current;
+
+        private void OnEnable()
+        {
+            Bottle.OnHit += UpdateText;
+        }
+
+        private void OnDisable()
+        {
+            Bottle.OnHit -= UpdateText;
+        }
+
+        private void Start()
+        {
+            _max = FindObjectsOfType<Bottle>().Length;
+
+            UpdateText();
+        }
+
+        private void UpdateText()
+        {
+            _current++;
+
+            _current = Mathf.Clamp(_current, 0, _max);
+
+            _counterBottle.text = $"{_current} / {_max} Bottles";
+        }
+    }
+}
