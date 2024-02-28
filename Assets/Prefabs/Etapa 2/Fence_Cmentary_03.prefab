@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1285530743720968169}
   - component: {fileID: 4644542466021105792}
   - component: {fileID: 2318297245595442644}
-  - component: {fileID: 2989158085726840052}
   - component: {fileID: 3506669435518904864}
   m_Layer: 0
   m_Name: Fence_Cmentary_03
@@ -85,22 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!111 &2989158085726840052
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375189356109811678}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 4299129368205833123, guid: 638d8b240012a3847a1c542a063a6594, type: 3}
-  m_Animations:
-  - {fileID: 4299129368205833123, guid: 638d8b240012a3847a1c542a063a6594, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!65 &3506669435518904864
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -17,8 +17,8 @@ namespace Ainoa.Locomotion
         /// <param name="ctx"></param>
         public void OnMove(InputAction.CallbackContext ctx)
         {
-            Debug.Log(ctx.ReadValue<Vector2>());
-            OnMoveDelegate?.Invoke(ctx.ReadValue<Vector2>());
+            Debug.Log(ctx.ReadValue<Vector3>());
+            OnMoveDelegate?.Invoke(ctx.ReadValue<Vector3>());
         }
          
     }
