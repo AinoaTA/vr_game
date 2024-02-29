@@ -13,7 +13,7 @@ namespace Ainoa.Shoot
 		private readonly Bullet _prefab;
 		private readonly bool _dynamic;
 
-		private List<Transform> Transforms; 
+		private List<Transform> Transforms = new(); 
 
 		/// <summary>
 		/// Dynamic means the pool will increase quantity if there is not enough items in pool.

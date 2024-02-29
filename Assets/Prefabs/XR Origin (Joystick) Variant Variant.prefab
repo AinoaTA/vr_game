@@ -48,6 +48,54 @@ MonoBehaviour:
   _prefabBullet: {fileID: 7422446616971256939, guid: c8a1b88585970bb44ab349d54f6a1435, type: 3}
   _bulletStore: {fileID: 0}
   _firePoint: {fileID: 0}
+--- !u!1 &4939938436106444063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7649552957983179526}
+  - component: {fileID: 3702744527077386296}
+  m_Layer: 0
+  m_Name: Right ShootManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7649552957983179526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939938436106444063}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7820856127402028228}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3702744527077386296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939938436106444063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fd3b0c1716bab4198f1f32af7ea44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletSpeedDefault: 5
+  _prefabBullet: {fileID: 7422446616971256939, guid: c8a1b88585970bb44ab349d54f6a1435, type: 3}
+  _bulletStore: {fileID: 0}
+  _firePoint: {fileID: 0}
 --- !u!1 &5453582507005859182
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,19 +371,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_PositionInput.m_Action.m_Id
-      value: 1048bb0f-4601-4c0d-ac63-ffa0ddcaad0d
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_RotationInput.m_Action.m_Id
-      value: a78c92a2-5189-4259-93ec-a3ff3eb389df
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_PositionInput.m_Action.m_Name
-      value: Position
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_RotationInput.m_Action.m_Name
-      value: Rotation
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_TrackingStateInput.m_Action.m_Id
@@ -343,19 +391,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_PositionInput.m_Action.m_ExpectedControlType
-      value: Vector3
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_RotationInput.m_Action.m_ExpectedControlType
-      value: Quaternion
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5733574677362766164, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
@@ -441,6 +489,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4594602653493442096, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6306086008236290107}
+    - targetCorrespondingSourceObject: {fileID: 3254710241276471299, guid: b09d3d94c6bae504781959593d22f696, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7649552957983179526}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3679271025879073568, guid: b09d3d94c6bae504781959593d22f696, type: 3}
       insertIndex: -1
@@ -682,6 +733,11 @@ Transform:
 --- !u!4 &7312849735005196743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2656623059136107776, guid: b09d3d94c6bae504781959593d22f696, type: 3}
+  m_PrefabInstance: {fileID: 4729428932416242887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7820856127402028228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3254710241276471299, guid: b09d3d94c6bae504781959593d22f696, type: 3}
   m_PrefabInstance: {fileID: 4729428932416242887}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7855406467750671561 stripped
