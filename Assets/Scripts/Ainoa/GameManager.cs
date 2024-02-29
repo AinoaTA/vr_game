@@ -9,7 +9,7 @@ namespace Ainoa
     {
         public static GameManager instance;
 
-        public Inventory inventory { get => _inventory; private set => _inventory = value; }
+        public Inventory Inventory { get => _inventory; private set => _inventory = value; }
 
         [SerializeField]
         private Inventory _inventory = new();
@@ -17,11 +17,13 @@ namespace Ainoa
         private void OnEnable()
         {
             Minigame.OnReward += UpdateInventory;
+            Bottle.BottleCounter.OnEndMinigame += NextScene;
         }
 
         private void OnDisable()
         {
             Minigame.OnReward -= UpdateInventory;
+            Bottle.BottleCounter.OnEndMinigame -= NextScene;
         }
 
         private void UpdateInventory(Item i)

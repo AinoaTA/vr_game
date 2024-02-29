@@ -8,7 +8,10 @@ namespace Ainoa.Bottle
         [SerializeField] private TMP_Text _counterBottle;
 
         private int _max;
-        private int _current;
+        private int _current = -1;
+
+        public delegate void DelegateEndMinigame();
+        public static DelegateEndMinigame OnEndMinigame;
 
         private void OnEnable()
         {
@@ -34,6 +37,11 @@ namespace Ainoa.Bottle
             _current = Mathf.Clamp(_current, 0, _max);
 
             _counterBottle.text = $"{_current} / {_max} Bottles";
+
+            if (_current >= _max) 
+            {
+                OnEndMinigame?.Invoke();
+            }
         }
     }
 }

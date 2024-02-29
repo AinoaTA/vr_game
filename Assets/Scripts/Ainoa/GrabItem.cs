@@ -5,32 +5,34 @@ public class GrabItem : MonoBehaviour
 {
     private Vector3 _initPos;
 
-    private XRBaseInteractable _interact;
-
+    protected XRBaseInteractable _interact;
+    protected bool _attached;
     private void Awake()
     {
         TryGetComponent(out _interact);
 
-        _interact.hoverEntered.AddListener(Interact); 
+        _interact.hoverEntered.AddListener(Interact);
     }
     private void Start()
     {
         _initPos = transform.position;
     }
 
-    public void Interact(BaseInteractionEventArgs hover)
-    { 
+    public virtual void Interact(BaseInteractionEventArgs hover)
+    {
         if (hover.interactorObject is XRDirectInteractor /*dr*/)
         {
             transform.SetParent(hover.interactorObject.transform);
         }
     }
-     
+    protected virtual void SetUpInHand() { }
+
     public void ResetAction(BaseInteractionEventArgs hover)
     {
         if (hover.interactorObject is XRDirectInteractor)
         {
-            transform.position = _initPos; 
+            transform.position = _initPos;
+            _attached = false;
         }
     }
 
