@@ -1790,7 +1790,7 @@ GameObject:
   - component: {fileID: 737462229}
   - component: {fileID: 737462228}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: BottleMinigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1808,6 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27da76eb24eb7b348b214c3f297d9fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemReward: {fileID: 0}
   _counterBottle: {fileID: 1604274972}
 --- !u!114 &737462229
 MonoBehaviour:

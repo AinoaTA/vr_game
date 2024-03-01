@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ainoa.Bottle
 {
-    public class BottleCounter : MonoBehaviour
+    public class BottleCounter : Minigame
     {
         [SerializeField] private TMP_Text _counterBottle;
 
