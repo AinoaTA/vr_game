@@ -43,17 +43,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Revolver Gun Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 150636, guid: 20d6fada1e8caa1488140d8433a67d6b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 439302, guid: 20d6fada1e8caa1488140d8433a67d6b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7060272
+      value: 1.3139479
       objectReference: {fileID: 0}
     - target: {fileID: 439302, guid: 20d6fada1e8caa1488140d8433a67d6b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7060272
+      value: 1.3139479
       objectReference: {fileID: 0}
     - target: {fileID: 439302, guid: 20d6fada1e8caa1488140d8433a67d6b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.7060272
+      value: 1.3139479
       objectReference: {fileID: 0}
     - target: {fileID: 439302, guid: 20d6fada1e8caa1488140d8433a67d6b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -144,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firePoint: {fileID: 5282362689356107904}
+  _localPos: {x: 0, y: 0, z: 0}
 --- !u!65 &1966403643110171135
 BoxCollider:
   m_ObjectHideFlags: 0

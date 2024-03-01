@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ManagerSound : MonoBehaviour
 {
-    private static ManagerSound _instance;
+    public static ManagerSound Instance;
     public static bool MusicMuted = false;
 
     // Volumes
@@ -23,9 +23,9 @@ public class ManagerSound : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
+            Instance = this;
         }
         else
         {
@@ -47,62 +47,52 @@ public class ManagerSound : MonoBehaviour
     public void MuteMusic()
     {
         MusicMuted = true;
-        _instance._musicSource.volume = _instance._volumeMusic * (MusicMuted ? 0 : 1);
+        Instance._musicSource.volume = Instance._volumeMusic * (MusicMuted ? 0 : 1);
     }
 
     public void UnmuteMusic()
     {
         MusicMuted = false;
-        _instance._musicSource.volume = _instance._volumeMusic * (MusicMuted ? 0 : 1);
+        Instance._musicSource.volume = Instance._volumeMusic * (MusicMuted ? 0 : 1);
     }
 
-    public void PlaySound(AudioClip clip, bool randomize = false)
+    public void PlaySound(AudioClip clip)
     {
-        if (randomize)
-        {
-            AudioSource g = new GameObject().AddComponent<AudioSource>();
-            g.transform.parent = _instance.transform;
-            g.volume = _instance._volumeEffects;
-            g.pitch = UnityEngine.Random.Range(.9f, 1.1f);
-            g.PlayOneShot(clip);
-            Destroy(g, clip.length);
-        }
-        else
-            _instance._effectsSource.PlayOneShot(clip);
+        Instance._effectsSource.PlayOneShot(clip);
     }
 
     public void StopAllSounds()
     {
-        if (_instance._effectsSource) _instance._effectsSource.Stop();
+        if (Instance._effectsSource) Instance._effectsSource.Stop();
     }
 
     public void PlayMusic(AudioClip clip, bool crossfade = false)
     {
-        if (clip == _instance._musicSource.clip) return;
+        if (clip == Instance._musicSource.clip) return;
 
         if (crossfade)
         {
-            _instance.StartCoroutine(_instance.CrossfadeMusic(clip));
+            Instance.StartCoroutine(Instance.CrossfadeMusic(clip));
         }
         else
         {
-            if (_instance._musicSource.clip != clip)
-                _instance._musicSource.clip = clip;
+            if (Instance._musicSource.clip != clip)
+                Instance._musicSource.clip = clip;
 
-            _instance._musicSource.Play();
+            Instance._musicSource.Play();
         }
     }
 
     public void PauseMusic()
     {
-        if (_instance._musicSource == null) return;
-        _instance._musicSource.Pause();
+        if (Instance._musicSource == null) return;
+        Instance._musicSource.Pause();
     }
 
     public void ResumeMusic()
     {
-        if (_instance._musicSource == null) return;
-        if (_instance._musicSource.isPlaying == false) _instance._musicSource.Play();
+        if (Instance._musicSource == null) return;
+        if (Instance._musicSource.isPlaying == false) Instance._musicSource.Play();
     }
 
 
@@ -111,10 +101,10 @@ public class ManagerSound : MonoBehaviour
         AudioSource g = new GameObject().AddComponent<AudioSource>();
         g.transform.SetParent(setParent);
 
-        if (fadeIn != null) _instance.StartCoroutine(_instance.ModifySoundParamInTime(result => g.volume = result, fadeIn));
-        else g.volume = _instance._volumeEffects;
+        if (fadeIn != null) Instance.StartCoroutine(Instance.ModifySoundParamInTime(result => g.volume = result, fadeIn));
+        else g.volume = Instance._volumeEffects;
 
-        if (pitchIn != null) _instance.StartCoroutine(_instance.ModifySoundParamInTime(result => g.pitch = result, pitchIn));
+        if (pitchIn != null) Instance.StartCoroutine(Instance.ModifySoundParamInTime(result => g.pitch = result, pitchIn));
         else g.pitch = 1f;
 
         g.clip = clip;
@@ -129,11 +119,11 @@ public class ManagerSound : MonoBehaviour
     {
         if (fadeOut)
         {
-            _instance.StartCoroutine(_instance.FadeOutMusic());
+            Instance.StartCoroutine(Instance.FadeOutMusic());
         }
         else
         {
-            _instance._musicSource.Stop();
+            Instance._musicSource.Stop();
         }
     }
 
@@ -185,7 +175,7 @@ public class ManagerSound : MonoBehaviour
         sp.InitialValue = initValue;
         sp.FinalValue = finalValue;
 
-        _instance.StartCoroutine(_instance.ModifySoundParamInTime(result => audioSource.pitch = result, sp));
+        Instance.StartCoroutine(Instance.ModifySoundParamInTime(result => audioSource.pitch = result, sp));
     }
 
     public void FadeSound(AudioSource audioSource, float time = 1f, float initValue = 0.5f, float finalValue = 1f)
@@ -195,7 +185,7 @@ public class ManagerSound : MonoBehaviour
         sp.InitialValue = initValue;
         sp.FinalValue = finalValue;
 
-        _instance.StartCoroutine(_instance.ModifySoundParamInTime(result => audioSource.volume = result, sp));
+        Instance.StartCoroutine(Instance.ModifySoundParamInTime(result => audioSource.volume = result, sp));
     }
 
     IEnumerator ModifySoundParamInTime(Action<float> variable, SoundParams? soundParams)

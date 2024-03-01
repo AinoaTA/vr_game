@@ -7,7 +7,8 @@ public class GrabItem : MonoBehaviour
 
     protected XRBaseInteractable _interact;
     protected bool _attached;
-    private void Awake()
+
+    protected virtual void Awake()
     {
         TryGetComponent(out _interact);
 
@@ -21,7 +22,7 @@ public class GrabItem : MonoBehaviour
     public virtual void Interact(BaseInteractionEventArgs hover)
     {
         if (hover.interactorObject is XRDirectInteractor /*dr*/)
-        {
+        { 
             transform.SetParent(hover.interactorObject.transform);
         }
     }

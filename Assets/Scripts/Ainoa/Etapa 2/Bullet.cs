@@ -13,6 +13,8 @@ namespace Ainoa.Shoot
         {
             _speed = speed;
             _dir = dir;
+
+            transform.rotation = Quaternion.LookRotation(_dir); 
         }
 
         private void Update()
@@ -23,12 +25,14 @@ namespace Ainoa.Shoot
 
             if (_currTimeAlive >= _maxTimeAlive)
             {
-                OnDisable();
+                Disabled();
             }
         }
 
-        private void OnDisable()
+        private void Disabled()
         {
+            gameObject.SetActive(false);
+
             _speed = 0;
             _dir = Vector3.zero;
             _currTimeAlive = 0;
@@ -44,7 +48,7 @@ namespace Ainoa.Shoot
                 {
                     b.Interact();
 
-                    OnDisable();
+                    Disabled();
                 }
             }
         }

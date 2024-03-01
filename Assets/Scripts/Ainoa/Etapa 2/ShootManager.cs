@@ -9,8 +9,9 @@ namespace Ainoa.Shoot
         [Header("References")]
         [SerializeField] private Bullet _prefabBullet;
         [SerializeField] private Transform _bulletStore;
-        [SerializeField] private Transform _firePoint;
+        [SerializeField] private AudioClip _shoot;
 
+        private Transform _firePoint; 
         private BulletPooling _pooling;
 
         private void Awake()
@@ -21,15 +22,18 @@ namespace Ainoa.Shoot
         public void Shoot()
         {
             if (_firePoint == null) return;
-
             var b = _pooling.GetObjectPooling();
+
+
+            if (_shoot != null) ManagerSound.Instance.PlaySound(_shoot);
+
 
             b.Init(_firePoint.forward, _bulletSpeedDefault);
             b.transform.position = _firePoint.position;
             b.gameObject.SetActive(true);
         }
 
-        public void Attach(Transform firePoint) 
+        public void Attach(Transform firePoint)
         {
             _firePoint = firePoint;
         }

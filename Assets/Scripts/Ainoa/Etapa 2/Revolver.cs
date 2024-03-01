@@ -6,22 +6,29 @@ namespace Ainoa.Shoot
     public class Revolver : GrabItem
     {
         [SerializeField] private Transform _firePoint;
-
+        [SerializeField] private Vector3 _localPos;
         public override void Interact(BaseInteractionEventArgs hover)
-        {
+        { 
             if (_attached) return;
 
             base.Interact(hover);
 
-            var v = hover.interactorObject.transform.GetComponentInChildren<ShootManager>();
-
+            var v = hover.interactorObject.transform.parent.GetComponentInChildren<ShootManager>();
+             
             if (v != null)
             {
                 v.Attach(_firePoint);
 
+
+                //transform.localPosition = 
                 //set up well in hand.
                 _attached = true;
-            }
+            } 
+        }
+
+        private void OnDisable()
+        {
+            _interact.selectEntered.RemoveAllListeners();
         }
     }
 }
