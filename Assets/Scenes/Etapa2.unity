@@ -1843,12 +1843,12 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &737462231
 Canvas:
   m_ObjectHideFlags: 0
@@ -1858,8 +1858,8 @@ Canvas:
   m_GameObject: {fileID: 737462227}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_RenderMode: 2
+  m_Camera: {fileID: 8637302776550719200}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1880,8 +1880,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737462227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 173.31}
+  m_LocalScale: {x: 0.0016787781, y: 0.0016787781, z: 0.0016787781}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1604274974}
@@ -1889,9 +1889,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 157.429, y: 2.445}
+  m_SizeDelta: {x: 697.855, y: 157.2192}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &744792107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 825109780552977574, guid: 2b72d97a09c514d4cbd728463df64261, type: 3}
@@ -3826,15 +3826,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 81.4
+  m_fontSizeBase: 81.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3890,10 +3890,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 737462232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -30}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1620452866
 PrefabInstance:
@@ -6808,7 +6808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7970948682906354643, guid: 9a647d1a42bd7d74b87df1930db3c3c4, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7973718589126694906, guid: 9a647d1a42bd7d74b87df1930db3c3c4, type: 3}
       propertyPath: m_Layer
@@ -6996,6 +6996,11 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!20 &8637302776550719200 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1610279640927991303, guid: 9a647d1a42bd7d74b87df1930db3c3c4, type: 3}
+  m_PrefabInstance: {fileID: 8637302776550719192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8637302776550719201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7855406467750671561, guid: 9a647d1a42bd7d74b87df1930db3c3c4, type: 3}
