@@ -8,10 +8,7 @@ namespace Ainoa.Bottle
         [SerializeField] private TMP_Text _counterBottle;
 
         private int _max;
-        private int _current = -1;
-
-        public delegate void DelegateEndMinigame();
-        public static DelegateEndMinigame OnEndMinigame;
+        private int _current = -1; 
 
         private void OnEnable()
         {
@@ -40,7 +37,7 @@ namespace Ainoa.Bottle
 
             if (_current >= _max) 
             {
-                OnEndMinigame?.Invoke();
+                EndMinigame();
             }
         }
     }

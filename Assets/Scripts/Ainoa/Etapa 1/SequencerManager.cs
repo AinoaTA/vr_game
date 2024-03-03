@@ -135,8 +135,7 @@ namespace Ainoa.Scene1
 
         protected override void EndMinigame()
         {
-            base.EndMinigame();
-            //do something
+            base.EndMinigame(); 
         }
     }
 }
