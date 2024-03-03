@@ -18,15 +18,15 @@ namespace Ainoa.Shoot
         {
             _pooling = new(_prefabBullet, 30, _bulletStore, true);
         }
-
+        /// <summary>
+        /// Get from pooling and init the bullet
+        /// </summary>
         public void Shoot()
         {
             if (_firePoint == null) return;
             var b = _pooling.GetObjectPooling();
 
-
             if (_shoot != null) ManagerSound.Instance.PlaySound(_shoot);
-
 
             b.Init(_firePoint.forward, _bulletSpeedDefault);
             b.transform.position = _firePoint.position;

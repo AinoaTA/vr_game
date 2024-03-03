@@ -9,6 +9,7 @@ namespace Ainoa.Bottle
         public delegate void DelegateHit();
         public static DelegateHit OnHit;
 
+        [SerializeField] private AudioClip _audioClip;
         private Collider _col;
 
         private void Awake()
@@ -20,6 +21,8 @@ namespace Ainoa.Bottle
         {
             _col.enabled = false;
             OnHit?.Invoke();
+
+            ManagerSound.Instance.PlaySound(_audioClip);
 
             gameObject.SetActive(false);
         }

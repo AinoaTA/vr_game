@@ -8,22 +8,18 @@ namespace Ainoa.Shoot
         [SerializeField] private Transform _firePoint;
         [SerializeField] private Vector3 _localPos;
         public override void Interact(BaseInteractionEventArgs hover)
-        { 
+        {
             if (_attached) return;
 
             base.Interact(hover);
 
             var v = hover.interactorObject.transform.parent.GetComponentInChildren<ShootManager>();
-             
+
             if (v != null)
             {
                 v.Attach(_firePoint);
-
-
-                //transform.localPosition = 
-                //set up well in hand.
                 _attached = true;
-            } 
+            }
         }
 
         private void OnDisable()

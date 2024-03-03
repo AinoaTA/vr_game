@@ -23,11 +23,8 @@ public class GrabItem : MonoBehaviour
     protected virtual void SetUpInHand() { }
 
     public virtual void ResetAction(BaseInteractionEventArgs hover)
-    {
-        //if (hover.interactorObject is XRDirectInteractor)
-        //{
-            transform.position = _initPos;
-            _attached = false;
-        //}
-    } 
+    { 
+        transform.position = _initPos;
+        _attached = false; 
+    }
 }

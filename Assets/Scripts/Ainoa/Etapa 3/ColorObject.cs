@@ -13,8 +13,7 @@ namespace Ainoa.Scene3
         private Rigidbody _rb;
 
         protected override void Awake()
-        {
-            //base.Awake();
+        { 
             TryGetComponent(out _rb);
             TryGetComponent(out _col);
 
@@ -22,24 +21,18 @@ namespace Ainoa.Scene3
         }
 
         public override void Interact(BaseInteractionEventArgs hover)
-        {
-            //_pointToFollow = hover.
+        { 
             base.Interact(hover);
 
             if (_attached) return;
             _attached = true;
-            _col.enabled = false;
-            //_rb.isKinematic = true;
+            _col.enabled = false; 
         }
 
         public override void ResetAction(BaseInteractionEventArgs hover)
-        {
-            //if (hover.interactorObject is XRDirectInteractor)
-            //{
-            _col.enabled = true;
-            //_rb.isKinematic = false;
-            _attached = false;
-            //}
+        { 
+            _col.enabled = true; 
+            _attached = false; 
         }
 
         private void OnCollisionStay(Collision collision)

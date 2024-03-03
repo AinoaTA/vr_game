@@ -28,7 +28,7 @@ namespace Ainoa.Shoot
                 Disabled();
             }
         }
-
+        
         private void Disabled()
         {
             gameObject.SetActive(false);

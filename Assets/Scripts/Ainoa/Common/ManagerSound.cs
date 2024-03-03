@@ -31,9 +31,7 @@ public class ManagerSound : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
-
-        // Effects
+        } 
 
         _effectsSource.transform.parent = transform;
         _effectsSource.volume = _volumeEffects;
@@ -58,7 +56,8 @@ public class ManagerSound : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        Instance._effectsSource.PlayOneShot(clip);
+        if (clip != null)
+            Instance._effectsSource.PlayOneShot(clip);
     }
 
     public void StopAllSounds()

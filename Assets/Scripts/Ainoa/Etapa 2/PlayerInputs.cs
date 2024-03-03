@@ -18,7 +18,6 @@ namespace Ainoa.Locomotion
         public void OnMove(InputAction.CallbackContext ctx)
         {
             OnMoveDelegate?.Invoke(ctx.ReadValue<Vector2>());
-        }
-         
+        } 
     }
 }
