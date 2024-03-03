@@ -7,12 +7,15 @@ namespace Ainoa.Shoot
     {
         [SerializeField] private Transform _firePoint;
         [SerializeField] private Vector3 _localPos;
+
+        protected override void Awake() { }
         public override void Interact(BaseInteractionEventArgs hover)
         {
             if (_attached) return;
 
-            base.Interact(hover);
 
+            //base.Interact(hover);
+            Debug.Log("selecting");
             var v = hover.interactorObject.transform.parent.GetComponentInChildren<ShootManager>();
 
             if (v != null)
@@ -22,9 +25,11 @@ namespace Ainoa.Shoot
             }
         }
 
-        private void OnDisable()
+        public override void ResetAction(BaseInteractionEventArgs hover)
         {
-            _interact.selectEntered.RemoveAllListeners();
+            base.ResetAction(hover);
+
+            _attached = false;
         }
     }
 }

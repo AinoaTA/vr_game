@@ -302,9 +302,9 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
-                    ""id"": ""b2087bd2-737c-40c1-9d73-72429d3c9730"",
+                    ""id"": ""713de178-2091-4114-b1a5-6794ac39bd23"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -490,12 +490,12 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b123e0bc-40e6-4cc7-89bf-2e5355ef7489"",
-                    ""path"": ""<XRController>{LeftHand}/Primary2DAxis"",
+                    ""id"": ""89e7ca36-1af9-4b6c-a866-d53fcea74a33"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/triggerPressed"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Continuous Move;Generic XR Controller"",
-                    ""action"": ""Move"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -882,6 +882,15 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1dd5731-2b18-4e6d-be18-bc298c3c91a8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Select Value"",
                     ""type"": ""Value"",
                     ""id"": ""39bbf1ac-21a3-413d-90f6-6dbf6efeaabe"",
@@ -1121,6 +1130,17 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
                     ""action"": ""Translate Anchor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dcb4b53-0505-4733-9a26-09111621570a"",
+                    ""path"": ""<OculusTouchController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1385,7 +1405,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         m_XRILeftHandInteraction_UIPressValue = m_XRILeftHandInteraction.FindAction("UI Press Value", throwIfNotFound: true);
         m_XRILeftHandInteraction_RotateAnchor = m_XRILeftHandInteraction.FindAction("Rotate Anchor", throwIfNotFound: true);
         m_XRILeftHandInteraction_TranslateAnchor = m_XRILeftHandInteraction.FindAction("Translate Anchor", throwIfNotFound: true);
-        m_XRILeftHandInteraction_Move = m_XRILeftHandInteraction.FindAction("Move", throwIfNotFound: true);
+        m_XRILeftHandInteraction_Shoot = m_XRILeftHandInteraction.FindAction("Shoot", throwIfNotFound: true);
         // XRI LeftHand Locomotion
         m_XRILeftHandLocomotion = asset.FindActionMap("XRI LeftHand Locomotion", throwIfNotFound: true);
         m_XRILeftHandLocomotion_TeleportSelect = m_XRILeftHandLocomotion.FindAction("Teleport Select", throwIfNotFound: true);
@@ -1405,6 +1425,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         // XRI RightHand Interaction
         m_XRIRightHandInteraction = asset.FindActionMap("XRI RightHand Interaction", throwIfNotFound: true);
         m_XRIRightHandInteraction_Select = m_XRIRightHandInteraction.FindAction("Select", throwIfNotFound: true);
+        m_XRIRightHandInteraction_Shoot = m_XRIRightHandInteraction.FindAction("Shoot", throwIfNotFound: true);
         m_XRIRightHandInteraction_SelectValue = m_XRIRightHandInteraction.FindAction("Select Value", throwIfNotFound: true);
         m_XRIRightHandInteraction_Activate = m_XRIRightHandInteraction.FindAction("Activate", throwIfNotFound: true);
         m_XRIRightHandInteraction_ActivateValue = m_XRIRightHandInteraction.FindAction("Activate Value", throwIfNotFound: true);
@@ -1618,7 +1639,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
     private readonly InputAction m_XRILeftHandInteraction_UIPressValue;
     private readonly InputAction m_XRILeftHandInteraction_RotateAnchor;
     private readonly InputAction m_XRILeftHandInteraction_TranslateAnchor;
-    private readonly InputAction m_XRILeftHandInteraction_Move;
+    private readonly InputAction m_XRILeftHandInteraction_Shoot;
     public struct XRILeftHandInteractionActions
     {
         private @XRIDefaultInputActionsBasic m_Wrapper;
@@ -1631,7 +1652,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         public InputAction @UIPressValue => m_Wrapper.m_XRILeftHandInteraction_UIPressValue;
         public InputAction @RotateAnchor => m_Wrapper.m_XRILeftHandInteraction_RotateAnchor;
         public InputAction @TranslateAnchor => m_Wrapper.m_XRILeftHandInteraction_TranslateAnchor;
-        public InputAction @Move => m_Wrapper.m_XRILeftHandInteraction_Move;
+        public InputAction @Shoot => m_Wrapper.m_XRILeftHandInteraction_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_XRILeftHandInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1665,9 +1686,9 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
             @TranslateAnchor.started += instance.OnTranslateAnchor;
             @TranslateAnchor.performed += instance.OnTranslateAnchor;
             @TranslateAnchor.canceled += instance.OnTranslateAnchor;
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IXRILeftHandInteractionActions instance)
@@ -1696,9 +1717,9 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
             @TranslateAnchor.started -= instance.OnTranslateAnchor;
             @TranslateAnchor.performed -= instance.OnTranslateAnchor;
             @TranslateAnchor.canceled -= instance.OnTranslateAnchor;
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IXRILeftHandInteractionActions instance)
@@ -1915,6 +1936,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
     private readonly InputActionMap m_XRIRightHandInteraction;
     private List<IXRIRightHandInteractionActions> m_XRIRightHandInteractionActionsCallbackInterfaces = new List<IXRIRightHandInteractionActions>();
     private readonly InputAction m_XRIRightHandInteraction_Select;
+    private readonly InputAction m_XRIRightHandInteraction_Shoot;
     private readonly InputAction m_XRIRightHandInteraction_SelectValue;
     private readonly InputAction m_XRIRightHandInteraction_Activate;
     private readonly InputAction m_XRIRightHandInteraction_ActivateValue;
@@ -1927,6 +1949,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         private @XRIDefaultInputActionsBasic m_Wrapper;
         public XRIRightHandInteractionActions(@XRIDefaultInputActionsBasic wrapper) { m_Wrapper = wrapper; }
         public InputAction @Select => m_Wrapper.m_XRIRightHandInteraction_Select;
+        public InputAction @Shoot => m_Wrapper.m_XRIRightHandInteraction_Shoot;
         public InputAction @SelectValue => m_Wrapper.m_XRIRightHandInteraction_SelectValue;
         public InputAction @Activate => m_Wrapper.m_XRIRightHandInteraction_Activate;
         public InputAction @ActivateValue => m_Wrapper.m_XRIRightHandInteraction_ActivateValue;
@@ -1946,6 +1969,9 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
             @SelectValue.started += instance.OnSelectValue;
             @SelectValue.performed += instance.OnSelectValue;
             @SelectValue.canceled += instance.OnSelectValue;
@@ -1974,6 +2000,9 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
             @SelectValue.started -= instance.OnSelectValue;
             @SelectValue.performed -= instance.OnSelectValue;
             @SelectValue.canceled -= instance.OnSelectValue;
@@ -2240,7 +2269,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         void OnUIPressValue(InputAction.CallbackContext context);
         void OnRotateAnchor(InputAction.CallbackContext context);
         void OnTranslateAnchor(InputAction.CallbackContext context);
-        void OnMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
     public interface IXRILeftHandLocomotionActions
     {
@@ -2264,6 +2293,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
     public interface IXRIRightHandInteractionActions
     {
         void OnSelect(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
         void OnSelectValue(InputAction.CallbackContext context);
         void OnActivate(InputAction.CallbackContext context);
         void OnActivateValue(InputAction.CallbackContext context);

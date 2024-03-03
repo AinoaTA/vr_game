@@ -3,8 +3,7 @@ using TMPro;
 using UnityEngine.Events;
 
 namespace Ainoa.UI
-{
-
+{ 
     public class UICounter : MonoBehaviour
     {
         private static UICounter _instance;
@@ -12,8 +11,19 @@ namespace Ainoa.UI
         private TMP_Text _text;
 
         private const string _format = "{0:0}:{1:00}"; //avoid string "lag"
-
+        private bool _stop;
         private UnityEvent _onQuit = new();
+
+        private void OnEnable()
+        {
+            ExitGame.OnStop += StopCounter;
+        }
+         
+        private void OnDisable()
+        {
+            ExitGame.OnStop -= StopCounter;
+        }
+
         private void Awake()
         {
             if (_instance != null && _instance != this)
@@ -31,6 +41,8 @@ namespace Ainoa.UI
 
         private void Update()
         {
+            if (_stop) return;
+
             _timer += Time.deltaTime;
             int minutes = Mathf.FloorToInt(_timer / 60f);
             int seconds = Mathf.FloorToInt(_timer - minutes * 60);
@@ -41,6 +53,10 @@ namespace Ainoa.UI
         private void OnApplicationQuit()
         {
             _onQuit?.Invoke();
+        } 
+        private void StopCounter() 
+        {
+            _stop = true;
         }
     }
 }

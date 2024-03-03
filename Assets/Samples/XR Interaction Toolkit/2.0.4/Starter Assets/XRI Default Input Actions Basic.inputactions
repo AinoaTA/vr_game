@@ -280,9 +280,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Move",
+                    "name": "Shoot",
                     "type": "Button",
-                    "id": "b2087bd2-737c-40c1-9d73-72429d3c9730",
+                    "id": "713de178-2091-4114-b1a5-6794ac39bd23",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -468,12 +468,12 @@
                 },
                 {
                     "name": "",
-                    "id": "b123e0bc-40e6-4cc7-89bf-2e5355ef7489",
-                    "path": "<XRController>{LeftHand}/Primary2DAxis",
+                    "id": "89e7ca36-1af9-4b6c-a866-d53fcea74a33",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
                     "interactions": "",
-                    "processors": "StickDeadzone",
-                    "groups": "Continuous Move;Generic XR Controller",
-                    "action": "Move",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -860,6 +860,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "d1dd5731-2b18-4e6d-be18-bc298c3c91a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Select Value",
                     "type": "Value",
                     "id": "39bbf1ac-21a3-413d-90f6-6dbf6efeaabe",
@@ -1099,6 +1108,17 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3dcb4b53-0505-4733-9a26-09111621570a",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
