@@ -54,10 +54,12 @@ public class ManagerSound : MonoBehaviour
         Instance._musicSource.volume = Instance._volumeMusic * (MusicMuted ? 0 : 1);
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip )
     {
         if (clip != null)
+        {
             Instance._effectsSource.PlayOneShot(clip);
+        }
     }
 
     public void StopAllSounds()

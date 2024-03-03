@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: 1
+  _grab: {fileID: 8300000, guid: 1179ef338c8de8242a86bf94e9a57a68, type: 3}
 --- !u!65 &7665980893226721241
 BoxCollider:
   m_ObjectHideFlags: 0

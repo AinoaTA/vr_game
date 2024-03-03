@@ -47,7 +47,7 @@ MonoBehaviour:
   _bulletSpeedDefault: 5
   _prefabBullet: {fileID: 7422446616971256939, guid: c8a1b88585970bb44ab349d54f6a1435, type: 3}
   _bulletStore: {fileID: 0}
-  _firePoint: {fileID: 0}
+  _shoot: {fileID: 8300000, guid: 6a66a3097e31f9246ba3c6ae0cabebaf, type: 3}
 --- !u!1 &4939938436106444063
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   _bulletSpeedDefault: 5
   _prefabBullet: {fileID: 7422446616971256939, guid: c8a1b88585970bb44ab349d54f6a1435, type: 3}
   _bulletStore: {fileID: 0}
-  _firePoint: {fileID: 0}
+  _shoot: {fileID: 0}
 --- !u!1 &5453582507005859182
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,7 @@ namespace Ainoa
 {
     public class GameManager : MonoBehaviour
     {
-        public static GameManager instance;
-
+        public static GameManager instance; 
         public Inventory Inventory { get => _inventory; private set => _inventory = value; }
 
         [SerializeField]
@@ -43,7 +42,7 @@ namespace Ainoa
 
         IEnumerator NextSceneRoutine()
         {
-            UI.Fade.instance.TransitionFade(1, 0.3f);
+            //UI.Fade.instance.TransitionFade(1, 0.3f);
             yield return new WaitForSeconds(0.3f);
 
             int index = SceneManager.GetActiveScene().buildIndex;

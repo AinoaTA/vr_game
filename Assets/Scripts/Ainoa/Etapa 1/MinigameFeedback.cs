@@ -8,7 +8,8 @@ public class MinigameFeedback : MonoBehaviour
     [SerializeField] private Material _base;
     [SerializeField] private Material _correct;
     [SerializeField] private Material _wrong;
-
+    [SerializeField] private AudioClip _wrongClip;
+    [SerializeField] private AudioClip _wellClip;
     private IEnumerator _routine;
 
 
@@ -19,6 +20,7 @@ public class MinigameFeedback : MonoBehaviour
     {
         if (_routine != null) StopCoroutine(_routine);
         StartCoroutine(_routine = Showroutine(_wrong));
+        ManagerSound.Instance.PlaySound(_wrongClip);
     }
 
     /// <summary>
@@ -28,6 +30,7 @@ public class MinigameFeedback : MonoBehaviour
     {
         if (_routine != null) StopCoroutine(_routine);
         StartCoroutine(_routine = Showroutine(_correct));
+        ManagerSound.Instance.PlaySound(_wellClip);
     }
      
     private IEnumerator Showroutine(Material m)

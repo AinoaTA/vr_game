@@ -81,7 +81,7 @@ namespace Ainoa.Scene1
             _completedSequence = false;
             _currentRound++;
 
-            if (_currentRound < _maxRounds)
+            if (_currentRound <= _maxRounds)
             {
                 OnCounterAdd?.Invoke();
                 _sequences = GetNewSequence();

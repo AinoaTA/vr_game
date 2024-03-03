@@ -8,7 +8,7 @@ namespace Ainoa.Scene3
         public Basket.Color ColorReference => _color;
 
         [SerializeField] private Basket.Color _color;
-
+        [SerializeField] private AudioClip _grab;
         private Collider _col;
         private Rigidbody _rb;
 
@@ -25,6 +25,8 @@ namespace Ainoa.Scene3
             base.Interact(hover);
 
             if (_attached) return;
+
+            ManagerSound.Instance.PlaySound(_grab);
             _attached = true;
             _col.enabled = false; 
         }
@@ -51,6 +53,8 @@ namespace Ainoa.Scene3
                 else
                 {
                     transform.position = _initPos;
+                    _col.enabled = true;
+                    _rb.isKinematic = false;
                 }
             }
         }

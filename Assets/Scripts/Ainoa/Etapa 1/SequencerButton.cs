@@ -16,6 +16,7 @@ namespace Ainoa.Scene1
         [SerializeField] private Material _hint;
         [SerializeField] private Transform _visual; 
         [SerializeField] private Vector3 _localAxis;
+        [SerializeField] private AudioClip _press;
 
         [SerializeField] private float _resetSpeed = 5f;
         private Transform _pokeAttachTransform;
@@ -95,7 +96,8 @@ namespace Ainoa.Scene1
             {
                 _pressedCompleted = true;
                 OnSequence?.Invoke(_typeSequence);
-                StartCoroutine(Showroutine());
+                ManagerSound.Instance.PlaySound(_press);
+                Show();
             }
         }
 

@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Events;
+using UnityEngine.Events; 
 
 namespace Ainoa.UI
 { 
     public class UICounter : MonoBehaviour
     {
+        [SerializeField] private Canvas _canvas;
+
         private static UICounter _instance;
         private float _timer;
         private TMP_Text _text;
@@ -17,6 +19,8 @@ namespace Ainoa.UI
         private void OnEnable()
         {
             ExitGame.OnStop += StopCounter;
+
+            _canvas.worldCamera = Camera.main;
         }
          
         private void OnDisable()
@@ -58,5 +62,10 @@ namespace Ainoa.UI
         {
             _stop = true;
         }
+
+        private void OnLevelWasLoaded(int level)
+        {
+            _canvas.worldCamera = Camera.main;
+        } 
     }
 }

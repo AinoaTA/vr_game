@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Ainoa.Shoot
 {
-	public class BulletPooling : MonoBehaviour
+	public class BulletPooling
 	{
 		public List<Bullet> ListMove { get => _list; private set => _list = value; }
 		private List<Bullet> _list = new();

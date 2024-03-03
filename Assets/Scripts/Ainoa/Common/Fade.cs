@@ -9,12 +9,14 @@ namespace Ainoa.UI
         [SerializeField] private Image _fadeImage;
 
         public static Fade instance;
+        private Canvas _canvas;
         private void Awake()
         {
             if (instance == null)
             {
                 instance = this;
                 DontDestroyOnLoad(instance);
+                TryGetComponent(out _canvas);
             }
             else
             {
@@ -57,6 +59,11 @@ namespace Ainoa.UI
                 _fadeImage.color = Color.Lerp(futureColor, c, t / dur);
                 yield return null;
             }
+        }
+
+        private void OnLevelWasLoaded(int level)
+        {
+            _canvas.worldCamera = Camera.main;
         }
     }
 }

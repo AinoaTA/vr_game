@@ -225,6 +225,7 @@ MonoBehaviour:
   _hint: {fileID: 2100000, guid: 8ee6020e615dfdb458c312b15b58e1e0, type: 2}
   _visual: {fileID: 1360886431837458538}
   _localAxis: {x: 0, y: 1, z: 0}
+  _press: {fileID: 8300000, guid: 169f28fc04008a8408e302f53a124d18, type: 3}
   _resetSpeed: 5
 --- !u!114 &7282308416035084220
 MonoBehaviour:
