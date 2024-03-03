@@ -300,6 +300,15 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2087bd2-737c-40c1-9d73-72429d3c9730"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -478,6 +487,17 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
                     ""action"": ""Translate Anchor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b123e0bc-40e6-4cc7-89bf-2e5355ef7489"",
+                    ""path"": ""<XRController>{LeftHand}/Primary2DAxis"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": ""Continuous Move;Generic XR Controller"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1365,6 +1385,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         m_XRILeftHandInteraction_UIPressValue = m_XRILeftHandInteraction.FindAction("UI Press Value", throwIfNotFound: true);
         m_XRILeftHandInteraction_RotateAnchor = m_XRILeftHandInteraction.FindAction("Rotate Anchor", throwIfNotFound: true);
         m_XRILeftHandInteraction_TranslateAnchor = m_XRILeftHandInteraction.FindAction("Translate Anchor", throwIfNotFound: true);
+        m_XRILeftHandInteraction_Move = m_XRILeftHandInteraction.FindAction("Move", throwIfNotFound: true);
         // XRI LeftHand Locomotion
         m_XRILeftHandLocomotion = asset.FindActionMap("XRI LeftHand Locomotion", throwIfNotFound: true);
         m_XRILeftHandLocomotion_TeleportSelect = m_XRILeftHandLocomotion.FindAction("Teleport Select", throwIfNotFound: true);
@@ -1597,6 +1618,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
     private readonly InputAction m_XRILeftHandInteraction_UIPressValue;
     private readonly InputAction m_XRILeftHandInteraction_RotateAnchor;
     private readonly InputAction m_XRILeftHandInteraction_TranslateAnchor;
+    private readonly InputAction m_XRILeftHandInteraction_Move;
     public struct XRILeftHandInteractionActions
     {
         private @XRIDefaultInputActionsBasic m_Wrapper;
@@ -1609,6 +1631,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         public InputAction @UIPressValue => m_Wrapper.m_XRILeftHandInteraction_UIPressValue;
         public InputAction @RotateAnchor => m_Wrapper.m_XRILeftHandInteraction_RotateAnchor;
         public InputAction @TranslateAnchor => m_Wrapper.m_XRILeftHandInteraction_TranslateAnchor;
+        public InputAction @Move => m_Wrapper.m_XRILeftHandInteraction_Move;
         public InputActionMap Get() { return m_Wrapper.m_XRILeftHandInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1642,6 +1665,9 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
             @TranslateAnchor.started += instance.OnTranslateAnchor;
             @TranslateAnchor.performed += instance.OnTranslateAnchor;
             @TranslateAnchor.canceled += instance.OnTranslateAnchor;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IXRILeftHandInteractionActions instance)
@@ -1670,6 +1696,9 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
             @TranslateAnchor.started -= instance.OnTranslateAnchor;
             @TranslateAnchor.performed -= instance.OnTranslateAnchor;
             @TranslateAnchor.canceled -= instance.OnTranslateAnchor;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IXRILeftHandInteractionActions instance)
@@ -2211,6 +2240,7 @@ public partial class @XRIDefaultInputActionsBasic: IInputActionCollection2, IDis
         void OnUIPressValue(InputAction.CallbackContext context);
         void OnRotateAnchor(InputAction.CallbackContext context);
         void OnTranslateAnchor(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
     public interface IXRILeftHandLocomotionActions
     {
